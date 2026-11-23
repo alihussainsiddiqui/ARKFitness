@@ -31,8 +31,8 @@ app.use('/api/contact', contactRoutes);
 const userRoutes = require('./routes/userRoutes'); // Add this import
 app.use('/api/users', userRoutes); // Add this middleware
 
-
-
+app.use('/api/metrics', require('./routes/metrics'));
+app.use('/api/reports', require('./routes/reports'));
 // Basic test route
 app.get('/', (req, res) => {
   res.send('ARK Fitness API is running...');

@@ -20,25 +20,26 @@ import EditWorkout from './pages/Workouts/EditWorkout';
 import Nutrition from './pages/Nutrition';
 import ExerciseLibrary from './pages/ExerciseLibrary';
 import Community from './pages/Community';
-
+import Metrics from './pages/Metrics';
+import BulkingCalculator from './pages/BulkingCalculator';
 function App() {
   return (
     <AuthProvider>
       <Router>
         <div className="flex flex-col min-h-screen bg-darkBg">
           <Navbar />
-          
+
           <main className="flex-grow">
             <Routes>
               {/* Public Marketing Pages */}
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              
+
               {/* Auth Pages */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              
+
               {/* Protected App Pages - Wrapped for Security */}
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
@@ -46,7 +47,9 @@ function App() {
               <Route path="/edit-workout/:id" element={<ProtectedRoute><EditWorkout /></ProtectedRoute>} />
               <Route path="/nutrition" element={<ProtectedRoute><Nutrition /></ProtectedRoute>} />
               <Route path="/library" element={<ExerciseLibrary />} />
-              <Route path="/community" element={<Community/>} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/metrics" element={<ProtectedRoute><Metrics /></ProtectedRoute>} />
+              <Route path="/bulking-calculator" element={<BulkingCalculator />} />
             </Routes>
           </main>
 
