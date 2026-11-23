@@ -2,46 +2,46 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AuthContext } from '../contexts/AuthContext';
-
+import BMICalculator from '../Components/BMICalculator';
 const Home = () => {
   const { user } = useContext(AuthContext);
-  
-  const slideRight = { 
-    hidden: { opacity: 0, x: -60 }, 
-    show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } 
+
+  const slideRight = {
+    hidden: { opacity: 0, x: -60 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
     <div className="font-sans overflow-hidden">
-      
+
       {/* HERO SECTION */}
       <section className="relative h-screen min-h-[600px] flex flex-col justify-center px-6 md:px-12 lg:px-24 overflow-hidden">
-        
+
         {/* 1. Dynamic Video Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <video 
-            autoPlay 
-            loop 
-            muted 
+          <video
+            autoPlay
+            loop
+            muted
             playsInline
             className="w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105"
           >
             <source src="/videos/hero-workout.mp4" type="video/mp4" />
             <img src="/images/gym1.jpeg" alt="Gym" className="w-full h-full object-cover" />
           </video>
-          
+
           <div className="absolute inset-0 bg-gradient-to-r from-darkBg via-darkBg/90 to-transparent w-full md:w-3/4 lg:w-2/3"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-darkBg/30 via-transparent to-darkBg"></div>
         </div>
 
         {/* 2. The Brand Glow */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 blur-[150px] rounded-full pointer-events-none z-0"></div>
-        
+
         {/* 3. The Hero Content */}
-        <motion.div 
-          initial="hidden" 
-          animate="show" 
-          transition={{ staggerChildren: 0.15, delayChildren: 0.2 }} 
+        <motion.div
+          initial="hidden"
+          animate="show"
+          transition={{ staggerChildren: 0.15, delayChildren: 0.2 }}
           className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2"
         >
           <div className="flex flex-col items-start text-left">
@@ -80,27 +80,27 @@ const Home = () => {
       {/* SPLIT SECTION */}
       <section className="py-24 bg-darkBg relative z-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          <motion.div 
-            initial={{ opacity: 0, x: -40 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
+
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative"
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/10 blur-[80px] rounded-full"></div>
-            <motion.img 
+            <motion.img
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
-              src="/images/gym2.jpeg" 
-              alt="Athlete training focused" 
+              src="/images/gym2.jpeg"
+              alt="Athlete training focused"
               className="relative z-10 w-full aspect-[4/5] object-cover rounded-3xl border border-gray-800 shadow-2xl"
             />
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 40 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
@@ -108,17 +108,17 @@ const Home = () => {
               Built For Focus
             </span>
             <h2 className="text-4xl md:text-5xl font-heading font-black text-headings tracking-tight mb-6">
-              FOCUS ON THE LIFT.<br/>
+              FOCUS ON THE LIFT.<br />
               <span className="text-primary">WE HANDLE THE REST.</span>
             </h2>
             <p className="text-bodyText text-lg leading-relaxed mb-8">
               You shouldn't need a manual to track your workouts. Ark Fitness uses a clean, intuitive dark-mode interface that lets you record your sets in seconds, directly from the gym floor.
             </p>
-            
+
             <ul className="space-y-5">
               {[
-                'No bloated social feeds or distractions', 
-                'Dynamic schema for heavy lifting and cardio', 
+                'No bloated social feeds or distractions',
+                'Dynamic schema for heavy lifting and cardio',
                 'Instant analytics and progression charts'
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-headings font-medium">
@@ -130,10 +130,11 @@ const Home = () => {
               ))}
             </ul>
           </motion.div>
-          
+
         </div>
       </section>
-
+      {/* BMI CALCULATOR */}
+      <BMICalculator />
       {/* FEATURES GRID */}
       <section className="py-24 bg-darkCard border-y border-gray-800/50 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
@@ -141,7 +142,7 @@ const Home = () => {
             <h2 className="text-3xl md:text-5xl font-heading font-black text-headings tracking-tight mb-4">EVERYTHING YOU NEED.</h2>
             <p className="text-bodyText font-medium text-lg">Zero bloat. Just the tools required for progression.</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-darkBg p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
@@ -150,7 +151,7 @@ const Home = () => {
               <h3 className="text-xl font-heading font-bold text-headings mb-3">Lightning Fast Logging</h3>
               <p className="text-bodyText text-sm leading-relaxed">Our UI is designed to get out of your way. Log complex sets, reps, and weights between resting periods without breaking focus.</p>
             </motion.div>
-            
+
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-darkBg p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
@@ -173,11 +174,11 @@ const Home = () => {
       {/* ABOUT & CONTACT SECTIONS */}
       <section className="py-24 bg-darkBg relative z-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          
+
           {/* About Us Card */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="bg-darkCard p-10 lg:p-14 rounded-3xl border border-gray-800 hover:border-primary/50 transition-all duration-300 group relative overflow-hidden flex flex-col justify-center"
           >
@@ -195,10 +196,10 @@ const Home = () => {
           </motion.div>
 
           {/* Contact Card */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            viewport={{ once: true }} 
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="bg-darkCard p-10 lg:p-14 rounded-3xl border border-gray-800 hover:border-primary/50 transition-all duration-300 group relative overflow-hidden flex flex-col justify-center"
           >

@@ -21,18 +21,17 @@ const Navbar = () => {
     <nav className="bg-darkBg/80 backdrop-blur-md border-b border-gray-800/50 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group" onClick={() => setIsMobileMenuOpen(false)}>
-          <motion.div 
-            whileHover={{ rotate: 180 }} 
-            transition={{ duration: 0.3 }}
-            className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-darkBg font-black text-xl"
-          >
-            A
-          </motion.div>
-          <span className="font-heading font-black text-2xl tracking-tight text-headings group-hover:text-primary transition-colors">
-            ARK<span className="text-primary font-normal">FITNESS</span>
-          </span>
-        </Link>
+    <Link
+  to="/"
+  className="flex items-center"
+  onClick={() => setIsMobileMenuOpen(false)}
+>
+  <img
+     src="/images/arklogo.png"
+    alt="ARK Fitness"
+    className="h-[100px] w-[100px] object-contain"
+  />
+</Link>
 
         {/* Desktop Dynamic Links */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-bold uppercase tracking-wider">
@@ -40,19 +39,15 @@ const Navbar = () => {
           <Link to="/" className="text-bodyText hover:text-headings transition-colors">Home</Link>
           <Link to="/about" className="text-bodyText hover:text-headings transition-colors">About</Link>
           <Link to="/contact" className="text-bodyText hover:text-headings transition-colors">Contact</Link>
-          
+          <Link to="/bulking-calculator" className="text-bodyText hover:text-headings transition-colors">Bulking-calculator</Link>
           <div className="w-px h-6 bg-gray-800"></div>
 
           {/* CONDITIONAL AUTH LINKS */}
           {currentUser ? (
             <>
-              <Link to="/dashboard" className="text-bodyText hover:text-headings transition-colors">Dashboard</Link>
-              <Link to="/nutrition" className="text-bodyText hover:text-headings transition-colors">Nutrition</Link>
-              <Link to="/library" className="text-bodyText hover:text-headings transition-colors">Library</Link>
-              <Link to="/community" className="text-bodyText hover:text-headings transition-colors">Community</Link>
-              
-              {/* DESKTOP AVATAR LINK */}
-              <Link to="/profile" className="flex items-center gap-3 ml-2 group border-l border-gray-800 pl-6">
+              <Link to="/dashboard" className="text-bodyText hover:text-headings transition-colors">Dashboard</Link>  
+          
+              <Link to="/profile" className="flex items-center gap-3 ml-2 group pl-6">
                 <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-700 group-hover:border-primary transition-colors bg-darkBg flex items-center justify-center">
                   {currentUser.avatar ? (
                     <img src={currentUser.avatar} alt="Profile" className="w-full h-full object-cover" />
